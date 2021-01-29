@@ -47,6 +47,10 @@ public class PlayerControler : MonoBehaviour
     void Update()
     {
         UpdateMouseLook();
+    }
+
+    void FixedUpdate()
+    {
         UpdateMove();
     }
 
