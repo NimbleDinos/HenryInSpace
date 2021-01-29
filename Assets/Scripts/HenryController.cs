@@ -9,12 +9,13 @@ public class HenryController : MonoBehaviour
 
     public float angularConstraint = 10, curThrust = 0, maxThrust = 10;
 
+    public GameObject hoseEnd, hoseCollider;
 
     public Scrollbar throttleUI;
     public Text speedText;
+    public Slider progressSlider;
 
-
-    public int throttlePos = 0;
+    public int throttlePos = 0, startDebris, curDebris;
 
 
 
@@ -25,10 +26,29 @@ public class HenryController : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        hoseEnd = this.gameObject;
+        hoseCollider = Instantiate(GameObject.CreatePrimitive(PrimitiveType.Sphere));
+        hoseCollider.AddComponent<DebrisSucker>();
+        hoseCollider.transform.localScale = new Vector3(180, 180, 180);
+        hoseCollider.transform.parent = hoseEnd.transform;
+        hoseCollider.transform.position = hoseEnd.transform.position;
     }
 
-    void Update()
+    private void OnCollisionEnter(Collision collision)
     {
+        if (collision.transform.tag == "Debris")
+        {
+            curDebris--;
+            Destroy(collision.gameObject);
+        }
+    }
+
+    void FixedUpdate()
+    {
+        
+
+
         Rigidbody rb = GetComponent<Rigidbody>();
 
         rb.AddTorque(transform.right * Input.GetAxis("Mouse Y") * angularThrustForce);
@@ -66,6 +86,10 @@ public class HenryController : MonoBehaviour
 
     }
 
+    private void Update()
+    {
+        progressSlider.value = startDebris / curDebris;
+    }
     void throttleContraints()
     {
         if (Input.GetKeyDown("left ctrl") || Input.GetKeyDown("left shift"))
