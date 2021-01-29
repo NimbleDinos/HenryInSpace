@@ -16,6 +16,9 @@ public class PlayerControler : MonoBehaviour
     [SerializeField][Range(0.0f, 0.5f)] float mouseSmoothTime = 0.03f;
 
     [SerializeField] bool lockCursor = true;
+    [SerializeField] bool isOnHeavyPlanet = false;
+    [SerializeField] bool isOnNormalPlanet = false;
+    [SerializeField] bool isOnLightPlanet = true;
 
     float cameraPitch = 0.0f;
     float velocityY = 0.0f;
@@ -76,7 +79,20 @@ public class PlayerControler : MonoBehaviour
 
         if(Input.GetButtonDown("Jump") && controller.isGrounded)
         {
-            velocityY = Mathf.Sqrt(jumpHeight * -2.0f * gravity);
+            if(isOnLightPlanet)
+            {
+                velocityY = Mathf.Sqrt(jumpHeight * -2.0f * gravity);
+            }
+            else if (isOnNormalPlanet)
+            {
+                gravity = -20.0f;
+                velocityY = Mathf.Sqrt(jumpHeight * -0.9f * gravity);
+            }
+            else if (isOnHeavyPlanet)
+            {
+                gravity = -60.0f;
+                velocityY = Mathf.Sqrt(jumpHeight * -0.8f * gravity);
+            }
         }
 
         Vector3 velocity = (transform.forward * currentDir.y + transform.right * currentDir.x) * walkSpeed + Vector3.up * velocityY;
