@@ -79,11 +79,13 @@ Material:
     - _BumpScale: 1
     - _Cull: 2
     - _Cutoff: 0.5
+    - _DistanceAtten: 1
     - _DstBlend: 0
     - _EnvironmentReflections: 1
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
+    - _LightNumber: 1
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _QueueOffset: 0
@@ -97,6 +99,7 @@ Material:
     - _SrcBlend: 1
     - _Surface: 0
     - _USEFRESNEL: 1
+    - _USEMAINLIGHT: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
