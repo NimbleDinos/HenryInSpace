@@ -9,13 +9,15 @@ public class CatchFishBob : MonoBehaviour
     public bool isPlayerFishing = false;
     public ParticleSystem bubbleMachine;
     public GoFish goFish;
+    public GameObject fishPrefab;
 
     public int catchPeriod;
+    public float fishVelocity = 100f;
     private float startTime;
     private int waitPeriod;
     private bool timeWaited;
     private bool isFishReady = false;
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -53,6 +55,13 @@ public class CatchFishBob : MonoBehaviour
         bubbleScale.scale = new Vector3(1, 1, 1);
     }
 
+    private void SpawnFish()
+    {
+        Debug.Log(("Spawn fish"));
+        GameObject obj = Instantiate(fishPrefab, transform.position, Quaternion.identity);
+        obj.GetComponent<Rigidbody>().AddForce(GameObject.FindGameObjectWithTag("Player").transform.forward * fishVelocity + (new Vector3(0, 0.65f, 0) * fishVelocity));
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         startTime = Time.realtimeSinceStartup;
@@ -79,8 +88,8 @@ public class CatchFishBob : MonoBehaviour
             {
                 if (Input.GetKeyDown(goFish.fishKey)) 
                 {
-                    //TODO: Spawn fish
                     Debug.Log("FIIIIIIIIIIISH!!!!");
+                    SpawnFish();
                     isFishReady = false;
                 }
             }
