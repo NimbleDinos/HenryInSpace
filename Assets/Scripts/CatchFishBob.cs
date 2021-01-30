@@ -40,19 +40,31 @@ public class CatchFishBob : MonoBehaviour
         var particle = bubbleMachine.main;
         particle.startSpeed = 2;
         particle.maxParticles = 25;
+        particle.startLifetime = 3;
+        particle.duration = 3;
 
         var bubbleScale = bubbleMachine.shape;
         bubbleScale.scale = new Vector3(1, 1, 0.5f);
+        
+        var sol = bubbleMachine.sizeOverLifetime;
+        sol.xMultiplier = 1f;
+        sol.yMultiplier = 1f;
+        sol.zMultiplier = 1f;
     }
 
     private void MegaBubbles()
     {
         var particle = bubbleMachine.main;
-        particle.startSpeed = 10;
-        particle.maxParticles = 200;
-        
+        particle.startSpeed = 5;
+        particle.maxParticles = 100;
+
         var bubbleScale = bubbleMachine.shape;
-        bubbleScale.scale = new Vector3(1, 1, 1);
+        bubbleScale.scale = new Vector3(1, 1, 0.5f);
+
+        var sol = bubbleMachine.sizeOverLifetime;
+        sol.xMultiplier = 2f;
+        sol.yMultiplier = 2f;
+        sol.zMultiplier = 2f;
     }
 
     private void SpawnFish()
