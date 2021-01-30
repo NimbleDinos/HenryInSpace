@@ -23,7 +23,7 @@ Material:
   m_Name: Sun
   m_Shader: {fileID: -6465566751694194690, guid: 72bfc570e21d15a469ac02bf0aa80ae3,
     type: 3}
-  m_ShaderKeywords: _USEFRESNEL_ON
+  m_ShaderKeywords: _USEFRESNEL_ON _USEMAINLIGHT_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -79,11 +79,13 @@ Material:
     - _BumpScale: 1
     - _Cull: 2
     - _Cutoff: 0.5
+    - _DistanceAtten: 0
     - _DstBlend: 0
     - _EnvironmentReflections: 1
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
+    - _LightNumber: 0
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _QueueOffset: 0
@@ -95,6 +97,7 @@ Material:
     - _SrcBlend: 1
     - _Surface: 0
     - _USEFRESNEL: 1
+    - _USEMAINLIGHT: 1
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
