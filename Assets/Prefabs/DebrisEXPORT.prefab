@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 8419490093563375761}
   m_Layer: 0
   m_Name: DebrisEXPORT
-  m_TagString: Untagged
+  m_TagString: Debris
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -158,5 +158,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+  snootEnd: {fileID: 0}
   isDebris: 1
   curDebris: []

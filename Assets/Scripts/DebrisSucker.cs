@@ -23,9 +23,9 @@ public class DebrisSucker : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Debris")
+        if (other.tag == "Debris" || other.tag == "Fish")
         {
-            Debug.Log("Boop");
+            //Debug.Log("Boop");
             //Vector3 direction = transform.position - other.transform.position;
             //other.GetComponent<Rigidbody>().AddRelativeForce(direction.normalized * 300, ForceMode.Force);
             other.GetComponent<suckToward>().enabled = true;

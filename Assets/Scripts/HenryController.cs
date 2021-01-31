@@ -85,12 +85,13 @@ public class HenryController : MonoBehaviour
         speedText.text = "Speeeed: \n " + rb.velocity.magnitude.ToString("n2");
 
     }
-
+    public float sliderval = 0;
     private void Update()
     {
         if (startDebris != 0 && curDebris != 0)
         {
-            progressSlider.value = startDebris / curDebris;
+            sliderval = curDebris / startDebris;
+            progressSlider.value = sliderval;
         }
     }
     void throttleContraints()
