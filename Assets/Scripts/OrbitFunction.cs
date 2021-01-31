@@ -36,6 +36,8 @@ public class OrbitFunction : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        SUN = GameObject.FindGameObjectWithTag("Sun");
+
         orbitPlane = new Vector3(0, 1, orbitOffset).normalized;
 
         transform.RotateAround(SUN.transform.position, orbitPlane, rotationSpeed * Time.deltaTime);
