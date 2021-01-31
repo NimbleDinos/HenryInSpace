@@ -9,6 +9,8 @@ TagManager:
   - Debris
   - snootEnd
   - Chair
+  - Fish
+  - FishingSpot
   layers:
   - Default
   - TransparentFX

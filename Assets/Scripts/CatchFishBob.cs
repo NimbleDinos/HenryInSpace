@@ -55,23 +55,23 @@ public class CatchFishBob : MonoBehaviour
     private void MegaBubbles()
     {
         var particle = bubbleMachine.main;
-        particle.startSpeed = 5;
+        particle.startSpeed = 10;
         particle.maxParticles = 100;
 
         var bubbleScale = bubbleMachine.shape;
         bubbleScale.scale = new Vector3(1, 1, 0.5f);
 
         var sol = bubbleMachine.sizeOverLifetime;
-        sol.xMultiplier = 2f;
-        sol.yMultiplier = 2f;
-        sol.zMultiplier = 2f;
+        sol.xMultiplier = 10f;
+        sol.yMultiplier = 10f;
+        sol.zMultiplier = 10f;
     }
 
     private void SpawnFish()
     {
         Debug.Log(("Spawn fish"));
         GameObject obj = Instantiate(fishPrefab, transform.position, Quaternion.identity);
-        obj.GetComponent<Rigidbody>().AddForce(GameObject.FindGameObjectWithTag("Player").transform.forward * fishVelocity + (new Vector3(0, 0.65f, 0) * fishVelocity));
+        obj.GetComponent<Rigidbody>().AddForce(GameObject.FindGameObjectWithTag("Player").transform.forward * fishVelocity + (new Vector3(0, 0.65f, 0) * -fishVelocity));
     }
 
     private void OnTriggerEnter(Collider other)
@@ -84,10 +84,12 @@ public class CatchFishBob : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
+        Debug.Log("COLLIDING");
         if (!other.CompareTag("FishingSpot") || !isPlayerFishing) return;
         
         if (!isFishReady)
         {
+            Debug.Log("WAITING");
             if ((!(Time.realtimeSinceStartup >= startTime + waitPeriod)) || timeWaited) return;
             
             timeWaited = true;

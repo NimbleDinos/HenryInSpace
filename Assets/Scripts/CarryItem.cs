@@ -37,6 +37,7 @@ public class CarryItem : MonoBehaviour
     {
         if (Input.GetKeyDown("e"))
         {
+            Debug.Log("E HAS BEEN PRESSED");
             if (!canHold)
             {
                 Drop();
@@ -55,6 +56,7 @@ public class CarryItem : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
+        Debug.Log("FISH");
         if (!other.gameObject.CompareTag("Fish")) return;
         
         if (!fish)

@@ -59,7 +59,7 @@ public class ControllSwitcher : MonoBehaviour
             ThirdPersonCamera.SetActive(false);
             FirstPersonCamera.SetActive(true);
         }
-        else if
+        else
         {
             ship.GetComponent<HenryController>().enabled = true;
             player.GetComponent<PlayerControler>().enabled = false;
