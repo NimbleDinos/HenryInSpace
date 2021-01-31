@@ -35,14 +35,14 @@ public class HenryController : MonoBehaviour
         hoseCollider.transform.position = hoseEnd.transform.position;
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.transform.tag == "Debris")
-        {
-            curDebris--;
-            Destroy(collision.gameObject);
-        }
-    }
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    if (collision.transform.tag == "Debris")
+    //    {
+    //        curDebris--;
+    //        Destroy(collision.gameObject);
+    //    }
+    //}
 
     void FixedUpdate()
     {
@@ -88,7 +88,10 @@ public class HenryController : MonoBehaviour
 
     private void Update()
     {
-        progressSlider.value = startDebris / curDebris;
+        if (startDebris != 0 && curDebris != 0)
+        {
+            progressSlider.value = startDebris / curDebris;
+        }
     }
     void throttleContraints()
     {
