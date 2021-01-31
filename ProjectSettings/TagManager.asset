@@ -8,6 +8,7 @@ TagManager:
   - Sun
   - Debris
   - snootEnd
+  - Chair
   layers:
   - Default
   - TransparentFX
